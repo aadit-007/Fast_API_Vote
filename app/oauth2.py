@@ -58,6 +58,8 @@ def verify_acccess_token(token: str, credentials_exception):
         print(f"JWT Error: {str(e)}")
         raise credentials_exception
 
+def current_token_Id():
+  system.out.printlm
 
 def get_current_user(token: str = Depends(oauth2_schema), db: session = Depends(get_db)):
     credentials_exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="Could not validate credentials", headers={"WWW-Authenticate": "Bearer"})
