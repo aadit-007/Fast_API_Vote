@@ -22,16 +22,16 @@ def get_posts(
     search: Optional[str] = "",                     
 ):
     # Get posts with vote counts and owner information
-    results = (
-        db.query(models.Post, func.count(models.Vote.post_id).label("votes"), models.User)
-        .join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True)
-        .join(models.User, models.User.id == models.Post.owner_id)
-        .group_by(models.Post.id, models.User.id)
-        .filter(models.Post.title.contains(search))
-        .offset(skip)
-        .limit(limit)
-        .all()
-    )
+    # results = (
+    #     db.query(models.Post, func.count(models.Vote.post_id).label("votes"), models.User)
+    #     .join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True)
+    #     .join(models.User, models.User.id == models.Post.owner_id)
+    #     .group_by(models.Post.id, models.User.id)
+    #     .filter(models.Post.title.contains(search))
+    #     .offset(skip)
+    #     .limit(limit)
+    #     .all()
+    # )
     
     # Format the response to match PostOut schema
     formatted_posts = []
