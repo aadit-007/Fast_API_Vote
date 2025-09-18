@@ -12,29 +12,29 @@ from .routers import post, user, auth, vote
 app = FastAPI()
 
 origins = ["*"]
-# Allow all origins for development (be more restrictive in production)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,  # Allows all origins
-    allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods
-    allow_headers=["*"],  # Allows all headers
-)
+# # Allow all origins for development (be more restrictive in production)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,  # Allows all origins
+#     allow_credentials=True,
+#     allow_methods=["*"],  # Allows all methods
+#     allow_headers=["*"],  # Allows all headers
+# )
 
-# Root endpoint with CORS headers
-@app.get("/", response_model=dict)
-async def root():
-    return {
-        "message": "Welcome to the FastAPI Backend!",
-        "status": "running",
-        "docs": "/docs",
-        "timestamp": datetime.utcnow().isoformat()
-    }
+# # Root endpoint with CORS headers
+# @app.get("/", response_model=dict)
+# async def root():
+#     return {
+#         "message": "Welcome to the FastAPI Backend!",
+#         "status": "running",
+#         "docs": "/docs",
+#         "timestamp": datetime.utcnow().isoformat()
+#     }
 
-app.include_router(post.router)
-app.include_router(user.router)
-app.include_router(auth.router)
-app.include_router(vote.router)
+# app.include_router(post.router)
+# app.include_router(user.router)
+# app.include_router(auth.router)
+# app.include_router(vote.router)
 
 
 
